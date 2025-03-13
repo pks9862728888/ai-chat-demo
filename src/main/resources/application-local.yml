@@ -4,3 +4,10 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: gemma3
+
+web.cors.allowed-origins: http://localhost:3000
+
+logging:
+  level:
+    org.springframework: INFO
+    org.demo.ai.aichatdemo: DEBUG
