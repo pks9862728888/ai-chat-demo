@@ -1,4 +1,11 @@
-.container {
+.chatBlock {
   padding: var(--consistent-padding);
-  height: calc(100vh - 3.5rem);
+  border-radius: var(--consistent-border-radius);
+  border: 1px solid #ffffff;
+  margin-bottom: var(--consistent-margin);
+}
+
+.chatBlock ul, .chatBlock ol {
+  margin: 0;
+  padding-left: 1rem;
 }

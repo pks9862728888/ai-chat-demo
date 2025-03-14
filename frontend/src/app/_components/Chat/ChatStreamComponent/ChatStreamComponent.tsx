@@ -1,18 +1,31 @@
 import {useEffect, useState} from "react";
+import {ChatType} from "@/app/_type/ChatType";
 import styles from "./ChatStreamComponent.module.css";
 import {marked} from "marked";
 
-const ChatStreamComponent = ({prompt, enableSearch}:
-                             { prompt: string, enableSearch: () => void }) => {
-  const [chatResponse, setChatResponse] = useState("");
+marked.setOptions({
+  gfm: true, // Enable GitHub Flavored Markdown (supports nested lists properly)
+  breaks: true
+});
+
+const ChatStreamComponent = ({chatLog, enableSearch, fetchNewResponse}:
+                             {
+                               chatLog: ChatType,
+                               enableSearch: () => void,
+                               fetchNewResponse: boolean
+                             }) => {
+  const [message, setMessage] = useState(chatLog.content);
+  const prompt: string = chatLog.prompt;
 
   useEffect(() => {
-    if (prompt) {
+    if (fetchNewResponse) {
+      // Clear old stuff (if any)
+      setMessage(chatLog.content);
       const eventSource: EventSource = new EventSource(
         `http://localhost:8080/api/v1/chat/get-response?prompt='${prompt}'`);
 
       eventSource.onmessage = (event) => {
-        setChatResponse((prev: string): string => prev + event.data.slice(1, -1));
+        setMessage(prev => prev + event.data.slice(1, -1));
       };
 
       eventSource.onerror = () => {
@@ -28,14 +41,14 @@ const ChatStreamComponent = ({prompt, enableSearch}:
         enableSearch();
       };
     }
-  }, [prompt]);
+  }, [prompt, fetchNewResponse]);
 
   return (
     <div
-      className={styles.container}
-      dangerouslySetInnerHTML={{__html: marked.parse(chatResponse)}}
+      className={`${styles.chatBlock}`}
+      dangerouslySetInnerHTML={{__html: marked.parse(message)}}
     ></div>
   );
-};
+}
 
 export default ChatStreamComponent;

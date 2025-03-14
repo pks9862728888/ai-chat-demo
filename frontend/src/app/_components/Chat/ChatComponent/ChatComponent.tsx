@@ -1,40 +1,21 @@
 "use client";
 import React, {useState} from "react";
-import ChatStreamComponent from "@/app/_components/Chat/ChatStreamComponent/ChatStreamComponent";
-import styles from "./ChatComponent.module.css";
+import ChatLogComponent from "@/app/_components/Chat/ChatLogComponent/ChatLogComponent";
+import ChatSearchInput from "@/app/_components/Chat/ChatComponent/ChatSearchInput";
 
 const ChatComponent = () => {
   const [finalPrompt, setFinalPrompt] = useState("");
-  const [prompt, setPrompt] = useState("");
   const [searchDisabled, setSearchDisabled] = useState(false);
-  const handleSetPrompt = () => {
+  const handleSetPrompt = (prompt: string): void => {
     if (!searchDisabled) {
       setSearchDisabled(true);
       setFinalPrompt(prompt);
     }
   }
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleSetPrompt();
-    }
-  };
   return (
     <>
-      <div className={styles.searchContainer}>
-        <input
-          className={styles.input}
-          type="text"
-          value={prompt}
-          onKeyDown={handleKeyDown}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter your prompt"
-        />
-        <button className={`btnPrimary ${searchDisabled || !prompt || prompt.trim() === "" ? "btnPrimaryDisabled" : ""}`}
-                onClick={handleSetPrompt}
-                disabled={searchDisabled || !prompt || prompt.trim() === ""}
-        >Send</button>
-      </div>
-      <ChatStreamComponent prompt={finalPrompt} enableSearch={() => setSearchDisabled(false)}/>
+      <ChatSearchInput searchDisabled={searchDisabled} handleSetPrompt={handleSetPrompt}/>
+      <ChatLogComponent prompt={finalPrompt} enableSearch={() => setSearchDisabled(false)}/>
     </>
   );
 }
