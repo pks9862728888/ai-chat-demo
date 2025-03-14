@@ -27,6 +27,7 @@ public class ChatController extends GenericExceptionHandler {
   public Flux<String> generateChatResponse(@RequestParam("prompt") String prompt) {
     log.info("Get chat response...");
     return chatService.generateChatResponse(prompt)
+        .map(d -> String.format("'%s'", d))
         .doOnCancel(() -> log.info("Chat response generation cancelled!"))
         .doOnComplete(() -> log.info("Chat response generation complete!"));
   }

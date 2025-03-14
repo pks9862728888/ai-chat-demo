@@ -10,8 +10,7 @@ const ChatStreamComponent = () => {
       `http://localhost:8080/api/v1/chat/get-response?prompt='${promptText}'`);
 
     eventSource.onmessage = (event) => {
-      setChatResponse((prev: string): string =>
-        prev.endsWith(" ") || event.data.startsWith(" ") ? prev + event.data : prev + " " + event.data);
+      setChatResponse((prev: string): string => prev + event.data.slice(1, -1));
     };
 
     eventSource.onerror = () => {
