@@ -1,0 +1,14 @@
+.searchContainer {
+    display: flex;
+    width: 100%;
+    padding: var(--consistent-padding);
+}
+
+.input {
+    padding: var(--consistent-padding);
+    width: 100%;
+    margin-right: var(--consistent-margin);
+    border-radius: var(--consistent-border-radius);
+    background-color: var(--neutral-white);
+    color: var(--primary-text-color);
+}

@@ -1,13 +1,24 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #1A1F36;
+  --primary: #EDEFF5;
+  --secondary: #4A90E2;
+  --tertiary: #17A2B8;
+  --success-green: #28C76F;
+  --warning-yellow: #FFC107;
+  --danger-red: #F64E60;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Neutral Colors */
+  --neutral-dark-gray: #2C2E3E;
+  --neutral-light-gray: #B0B3C7;
+  --neutral-white: #f3f2f2;
+
+  /*Text colors*/
+  --primary-text-color: #1A1F36;
+
+  /*Paddings and margins*/
+  --consistent-padding: 0.5rem;
+  --consistent-margin: 0.5rem;
+  --consistent-border-radius: 5px;
 }
 
 html,
@@ -17,11 +28,9 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: var(--primary);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -35,8 +44,19 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.btnPrimary {
+  border-radius: var(--consistent-border-radius);
+  min-width: 10rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.btnPrimary:hover:not(.btnPrimaryDisabled) {
+  background-color: #5DADE2;
+}
+
+.btnPrimaryDisabled {
+  background-color: #A0C4E2;
+  color: #D1D5DB;
 }
