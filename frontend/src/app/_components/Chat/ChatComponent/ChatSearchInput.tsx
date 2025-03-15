@@ -6,9 +6,13 @@ const ChatSearchInput = ({searchDisabled, handleSetPrompt}:
   const [prompt, setPrompt] = useState("");
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      handleSetPrompt(prompt);
+      triggerSetPromptNClearForm();
     }
   };
+  const triggerSetPromptNClearForm = () => {
+    handleSetPrompt(prompt);
+    setPrompt("");
+  }
   return (
     <div className={styles.searchContainer}>
       <input
@@ -20,7 +24,7 @@ const ChatSearchInput = ({searchDisabled, handleSetPrompt}:
         placeholder="Enter your prompt"
       />
       <button className={`btnPrimary ${searchDisabled || !prompt || prompt.trim() === "" ? "btnPrimaryDisabled" : ""}`}
-              onClick={() => handleSetPrompt(prompt)}
+              onClick={triggerSetPromptNClearForm}
               disabled={searchDisabled || !prompt || prompt.trim() === ""}
       >Send
       </button>

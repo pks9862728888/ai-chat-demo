@@ -38,7 +38,6 @@ const ChatStreamComponent = ({chatLog, enableSearch, fetchNewResponse}:
 
       return () => {
         eventSource.close();
-        enableSearch();
       };
     }
   }, [prompt, fetchNewResponse]);
