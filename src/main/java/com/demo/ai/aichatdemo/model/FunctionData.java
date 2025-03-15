@@ -1,6 +1,7 @@
 package com.demo.ai.aichatdemo.model;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -9,10 +10,12 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class FunctionDescription {
-  private String name;
+@RequiredArgsConstructor
+public class FunctionData {
+  private final String name;
+  private String definition;
   private String syntax;
-  private List<FunctionParams> parameters;
+  private List<FunctionParams> functionParameters;
   private String returnValue;
   private List<String> descriptions;
   private List<FunctionExample> examples;

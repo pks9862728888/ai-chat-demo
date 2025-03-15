@@ -1,3 +1,8 @@
 spring:
   application:
     name: aichatdemo
+
+url:
+  xpathFunctionListUrl: https://developer.mozilla.org/en-US/docs/Web/XML/XPath/Reference/Functions
+  xpathFunctionDefinitionUrl: https://developer.mozilla.org/en-US/docs/Web/XML/XPath/Reference/Functions/%s
+

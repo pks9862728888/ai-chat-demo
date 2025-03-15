@@ -1,0 +1,1 @@
+{"name":"count","definition":"The count function counts the number of nodes in a node-set and returns an integer.","syntax":"count( node-set )","functionParameters":[{"parameterName":"node-set","description":"The node set to be counted."}],"returnValue":"An integer representing the number of nodes in a node-set.","descriptions":[],"examples":[]}

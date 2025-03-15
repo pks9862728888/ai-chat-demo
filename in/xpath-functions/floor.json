@@ -1,0 +1,1 @@
+{"name":"floor","definition":"The floor function evaluates a decimal number and returns the largest integer less than or equal to the decimal number.","syntax":"floor( number )","functionParameters":[{"parameterName":"number","description":"The decimal number to be evaluated."}],"returnValue":"The nearest integer less than or equal to number.","descriptions":[],"examples":[]}
