@@ -24,9 +24,10 @@ public class ChatController extends GenericExceptionHandler {
   }
 
   @GetMapping(value = "/get-response", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-  public Flux<String> generateChatResponse(@RequestParam("prompt") String prompt) {
+  public Flux<String> generateChatResponse(
+      @RequestParam("prompt") String prompt, @RequestParam("chatId") String chatId) {
     log.info("Get chat response...");
-    return chatService.generateChatResponse(prompt)
+    return chatService.generateChatResponse(prompt, chatId)
         .map(d -> String.format("'%s'", d))
         .doOnCancel(() -> log.info("Chat response generation cancelled!"))
         .doOnComplete(() -> log.info("Chat response generation complete!"));

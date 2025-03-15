@@ -8,9 +8,10 @@ marked.setOptions({
   breaks: true
 });
 
-const ChatStreamComponent = ({chatLog, enableSearch, fetchNewResponse}:
+const ChatStreamComponent = ({chatLog, chatId, enableSearch, fetchNewResponse}:
                              {
                                chatLog: ChatType,
+                               chatId: string,
                                enableSearch: () => void,
                                fetchNewResponse: boolean
                              }) => {
@@ -22,7 +23,7 @@ const ChatStreamComponent = ({chatLog, enableSearch, fetchNewResponse}:
       // Clear old stuff (if any)
       setMessage(chatLog.content);
       const eventSource: EventSource = new EventSource(
-        `http://localhost:8080/api/v1/chat/get-response?prompt='${prompt}'`);
+        `http://localhost:8080/api/v1/chat/get-response?prompt='${prompt}'&chatId=${chatId}`);
 
       eventSource.onmessage = (event) => {
         setMessage(prev => prev + event.data.slice(1, -1));

@@ -3,8 +3,8 @@ import {ChatType} from "@/app/_type/ChatType";
 import ChatStreamComponent from "@/app/_components/Chat/ChatStreamComponent/ChatStreamComponent";
 import styles from "./ChatLogComponent.module.css";
 
-const ChatLogComponent = ({prompt, enableSearch}:
-                          { prompt: string, enableSearch: () => void }) => {
+const ChatLogComponent = ({prompt, chatId, enableSearch}:
+                          { prompt: string, chatId: string, enableSearch: () => void }) => {
   const [chatLogs, setChatLogs] = useState<ChatType[]>([]);
   const chatIdIdx: RefObject<number> = useRef<number>(0);
 
@@ -27,6 +27,7 @@ const ChatLogComponent = ({prompt, enableSearch}:
       {chatLogs.map((chatLog: ChatType) => {
         return (<ChatStreamComponent
           key={chatLog.chatIdIdx}
+          chatId={chatId}
           chatLog={chatLog}
           enableSearch={enableSearch}
           fetchNewResponse={chatLog.chatIdIdx === chatLogs[chatLogs.length - 1].chatIdIdx && chatLog.isResponse}
