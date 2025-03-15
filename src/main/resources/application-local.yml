@@ -4,6 +4,20 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: gemma3
+    # https://docs.spring.io/spring-ai/reference/api/vectordbs/pgvector.html
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        batching-strategy: TOKEN_COUNT # Optional: Controls how documents are batched for embedding
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+        schema-name: core
+  datasource:
+    url: jdbc:postgresql://localhost:5432/aichat
+    username: ${DB_USERNAME_AICHAT}
+    password: ${DB_PASSWORD_AICHAT}
+
 
 web.cors.allowed-origins: http://localhost:3000
 

@@ -52,3 +52,4 @@ For further reference, please consider the following sections:
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/3.4.3/reference/using/devtools.html)
 * [Spring Reactive Web](https://docs.spring.io/spring-boot/3.4.3/reference/web/reactive.html)
 * [Ollama](https://docs.spring.io/spring-ai/reference/api/chat/ollama-chat.html)
+* [Xpath functions](https://developer.mozilla.org/en-US/docs/Web/XML/XPath/Reference/Functions?form=MG0AV3)
