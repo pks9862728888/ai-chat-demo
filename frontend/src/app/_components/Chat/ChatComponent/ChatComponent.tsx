@@ -14,8 +14,8 @@ const ChatComponent = () => {
   }
   return (
     <>
-      <ChatSearchInput searchDisabled={searchDisabled} handleSetPrompt={handleSetPrompt}/>
       <ChatLogComponent prompt={finalPrompt} enableSearch={() => setSearchDisabled(false)}/>
+      <ChatSearchInput searchDisabled={searchDisabled} handleSetPrompt={handleSetPrompt}/>
     </>
   );
 }
