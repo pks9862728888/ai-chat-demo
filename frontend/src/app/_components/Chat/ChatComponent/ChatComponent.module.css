@@ -1,3 +1,13 @@
+.mainWrapperContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.subWrapperContainer {
+    width: 70%;
+}
+
 .searchContainer {
     display: flex;
     width: 100%;

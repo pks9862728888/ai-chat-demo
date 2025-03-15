@@ -1,5 +1,5 @@
 :root {
-  --background: #1A1F36;
+  --background: #080f2b;
   --primary: #EDEFF5;
   --secondary: #4A90E2;
   --tertiary: #17A2B8;
@@ -28,7 +28,7 @@ body {
 }
 
 body {
-  color: var(--primary);
+  color: #bdbdbd;
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }

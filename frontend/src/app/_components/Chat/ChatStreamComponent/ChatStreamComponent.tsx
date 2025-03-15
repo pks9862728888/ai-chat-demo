@@ -43,10 +43,12 @@ const ChatStreamComponent = ({chatLog, enableSearch, fetchNewResponse}:
   }, [prompt, fetchNewResponse]);
 
   return (
-    <div
-      className={`${styles.chatBlock}`}
-      dangerouslySetInnerHTML={{__html: marked.parse(message)}}
-    ></div>
+    <div className={`${!chatLog.isResponse ? styles.requestChatBlockContainer : ""}`}>
+      <div
+        className={`${styles.chatBlock} ${!chatLog.isResponse ? styles.requestChatBlock : ""}`}
+        dangerouslySetInnerHTML={{__html: marked.parse(message)}}
+      ></div>
+    </div>
   );
 }
 

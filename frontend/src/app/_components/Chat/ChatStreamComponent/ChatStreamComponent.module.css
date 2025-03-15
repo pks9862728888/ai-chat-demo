@@ -1,12 +1,27 @@
 .chatBlock {
   padding: var(--consistent-padding);
   border-radius: var(--consistent-border-radius);
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: var(--consistent-margin);
   overflow-x: auto;
+  background-color: #0d1740;
 }
 
 .chatBlock ul, .chatBlock ol {
   margin: 0;
   padding-left: 1rem;
+}
+
+.requestChatBlock {
+  display: inline-block;
+  max-width: 80%;
+  background-color: #1d2440;
+  border: none;
+}
+
+.requestChatBlockContainer {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 100%;
 }
