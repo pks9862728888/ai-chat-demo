@@ -21,13 +21,8 @@ const ChatSearchInput = ({searchDisabled, handleSetPrompt}:
         value={prompt}
         onKeyDown={handleKeyDown}
         onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Enter your prompt"
+        placeholder="Ask me anything?"
       />
-      <button className={`btnPrimary ${searchDisabled || !prompt || prompt.trim() === "" ? "btnPrimaryDisabled" : ""}`}
-              onClick={triggerSetPromptNClearForm}
-              disabled={searchDisabled || !prompt || prompt.trim() === ""}
-      >Send
-      </button>
     </div>
   );
 }

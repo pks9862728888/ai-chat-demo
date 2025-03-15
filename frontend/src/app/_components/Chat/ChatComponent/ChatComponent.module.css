@@ -8,7 +8,7 @@
     padding: var(--consistent-padding);
     width: 100%;
     margin-right: var(--consistent-margin);
-    border-radius: var(--consistent-border-radius);
+    border-radius: 40px;
     background-color: var(--neutral-white);
     color: var(--primary-text-color);
 }
