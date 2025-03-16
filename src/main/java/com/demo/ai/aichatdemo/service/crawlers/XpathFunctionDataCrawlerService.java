@@ -31,8 +31,8 @@ public class XpathFunctionDataCrawlerService {
   public static final String FUNCTION_PARAMETER = "functionParameter";
   private final DataCrawlerUriConfig dataCrawlerUriConfig;
 
-  @Value("${dir.xpathFunctionDataDumpDir}")
-  private String xpathFunctionDataDumpDir;
+  @Value("${dir.inbuiltXpathFunctionDataDumpDir}")
+  private String inbuiltXpathFunctionDataDumpDir;
 
   @Async
   public void crawlNDownloadXpathFunctionData() {
@@ -71,7 +71,7 @@ public class XpathFunctionDataCrawlerService {
   private void saveFunctionDataAsJson(FunctionData functionData) {
     try {
       String json = new Gson().toJson(functionData);
-      Path outputPath = Paths.get(xpathFunctionDataDumpDir, functionData.getName() + JSON);
+      Path outputPath = Paths.get(inbuiltXpathFunctionDataDumpDir, functionData.getName() + JSON);
       log.info("Writing function data: {} in file: {}", functionData.getName(), outputPath);
       Files.write(outputPath, json.getBytes());
     } catch (IOException e) {

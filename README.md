@@ -1,4 +1,5 @@
 # Getting Started <hr />
+Set timezone property in VM option while startup: -Duser.timezone=Australia/Sydney
 
 # Pre-requisites <hr />
 To start docker image
@@ -7,7 +8,14 @@ docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 ```
 
 Step 2:
-Go inside shell and install required models: llama2 / gemma3
+Go inside shell and install required models: 
+llama2 / gemma3
+
+Embedding model: mxbai-embed-large
+
+```shell
+ollama pull mxbai-embed-large
+```
 
 Step 3: To verify if docker container is started properly
 ```shell

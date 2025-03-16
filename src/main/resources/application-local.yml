@@ -17,7 +17,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/aichat
     username: ${DB_USERNAME_AICHAT}
     password: ${DB_PASSWORD_AICHAT}
-
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 web.cors.allowed-origins: http://localhost:3000
 
@@ -25,6 +30,7 @@ logging:
   level:
     org.springframework: INFO
     org.demo.ai.aichatdemo: DEBUG
-
+    com.zaxxer.hikari: INFO
+    org.springframework.jdbc: INFO
 dir:
-  xpathFunctionDataDumpDir: in/xpath-functions
+  inbuiltXpathFunctionDataDumpDir: in/inbuilt-xpath-functions
