@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {ChatType} from "@/app/_type/ChatType";
 import styles from "./ChatStreamComponent.module.css";
 import {marked} from "marked";
+import ThinkingSpinner from "@/app/_components/common/ThinkingSpinner/ThinkingSpinner";
 
 marked.setOptions({
   gfm: true, // Enable GitHub Flavored Markdown (supports nested lists properly)
@@ -17,15 +18,18 @@ const ChatStreamComponent = ({chatLog, chatId, enableSearch, fetchNewResponse}:
                              }) => {
   const [message, setMessage] = useState(chatLog.content);
   const prompt: string = chatLog.prompt;
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (fetchNewResponse) {
       // Clear old stuff (if any)
       setMessage(chatLog.content);
+      setLoading(true);
       const eventSource: EventSource = new EventSource(
         `http://localhost:8080/api/v1/chat/get-response?prompt='${prompt}'&chatId=${chatId}`);
 
       eventSource.onmessage = (event) => {
+        setLoading(false);
         setMessage(prev => prev + event.data.slice(1, -1));
       };
 
@@ -45,10 +49,13 @@ const ChatStreamComponent = ({chatLog, chatId, enableSearch, fetchNewResponse}:
 
   return (
     <div className={`${!chatLog.isResponse ? styles.requestChatBlockContainer : ""}`}>
-      <div
+      {loading && <div className={styles.chatBlock}>
+        <ThinkingSpinner/>
+      </div>}
+      {!loading && <div
         className={`${styles.chatBlock} ${!chatLog.isResponse ? styles.requestChatBlock : ""}`}
         dangerouslySetInnerHTML={{__html: marked.parse(message)}}
-      ></div>
+      ></div>}
     </div>
   );
 }

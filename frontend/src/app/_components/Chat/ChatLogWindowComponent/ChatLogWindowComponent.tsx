@@ -1,9 +1,9 @@
 import {RefObject, useEffect, useRef, useState} from "react";
 import {ChatType} from "@/app/_type/ChatType";
 import ChatStreamComponent from "@/app/_components/Chat/ChatStreamComponent/ChatStreamComponent";
-import styles from "./ChatLogComponent.module.css";
+import styles from "./ChatLogWindowComponent.module.css";
 
-const ChatLogComponent = ({prompt, chatId, enableSearch}:
+const ChatLogWindowComponent = ({prompt, chatId, enableSearch}:
                           { prompt: string, chatId: string, enableSearch: () => void }) => {
   const [chatLogs, setChatLogs] = useState<ChatType[]>([]);
   const chatIdIdx: RefObject<number> = useRef<number>(0);
@@ -37,4 +37,4 @@ const ChatLogComponent = ({prompt, chatId, enableSearch}:
   );
 };
 
-export default ChatLogComponent;
+export default ChatLogWindowComponent;

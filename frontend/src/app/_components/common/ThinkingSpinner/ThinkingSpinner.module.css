@@ -1,0 +1,8 @@
+.thinkingDiv {
+  display: flex;
+  align-items: center;
+}
+
+.thinkingSpinner {
+  color: #17A2B8 !important;
+}
