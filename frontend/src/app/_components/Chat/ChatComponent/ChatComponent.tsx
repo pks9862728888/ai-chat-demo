@@ -1,7 +1,7 @@
 "use client";
 import React, {useState} from "react";
 import ChatLogComponent from "@/app/_components/Chat/ChatLogComponent/ChatLogComponent";
-import ChatSearchInput from "@/app/_components/Chat/ChatComponent/ChatSearchInput";
+import ChatSearchInput from "@/app/_components/Chat/ChatSearchInput/ChatSearchInput";
 import styles from "./ChatComponent.module.css";
 import { v4 as uuidv4 } from 'uuid';
 

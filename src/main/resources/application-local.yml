@@ -31,6 +31,7 @@ logging:
     org.springframework: INFO
     org.demo.ai.aichatdemo: DEBUG
     com.zaxxer.hikari: INFO
-    org.springframework.jdbc: INFO
+    org.springframework.jdbc: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 dir:
   inbuiltXpathFunctionDataDumpDir: in/inbuilt-xpath-functions

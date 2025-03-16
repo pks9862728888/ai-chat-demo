@@ -5,7 +5,7 @@ const ChatSearchInput = ({searchDisabled, handleSetPrompt}:
                          { searchDisabled: boolean, handleSetPrompt: (prompt: string) => void }) => {
   const [prompt, setPrompt] = useState("");
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && !searchDisabled) {
       triggerSetPromptNClearForm();
     }
   };
